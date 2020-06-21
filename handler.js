@@ -19,12 +19,10 @@ const connection = mysql.createConnection({
 
 app.post("/createheader", function (request, response) {
   const values = request.body;
-  const savings   = 0.44;
-  const totalcost = 3.45;
+  const userid = 1;
   
-  connection.query("INSERT INTO usershopheader(id, userid, savings, totalcost) VALUES (uuid(), 1, ?, ?)",
-    [savings, totalcost],
-    // [uuid(), values.savings, values.totalcost],
+  connection.query("INSERT INTO usershopheader(id, userid, savings, totalcost) VALUES (uuid(), ?, ?, ?)",
+    [userid, values.savings, values.totalcost],
      
     function (err, data) {
       if (err) {
