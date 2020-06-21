@@ -33,7 +33,30 @@ app.post("/createheader", function (request, response) {
       } else {
         response.status(201).send("Received a request to insert data ");
       };
-    });
+    }); 
+});
+
+app.post("/createitems", function (request, response) {
+  const values = request.body;
+  const itemid = 1;
+  const usershopheaderid = "12f69622-b3b4-11ea-85ff-06c7454f588e";
+  const itemname = "apples";
+  const qty = 3;
+  const price = 0.15
+  
+  connection.query("INSERT INTO usershopitems(id, usershopheaderid, itemname, qty, price) VALUES (?, ?, ?, ?, ?)",
+    [itemid, usershopheaderid, itemname, qty, price],
+     
+    function (err, data) {
+      if (err) {
+        console.log("Error Inserting tasks", err);
+        response.status(500).json({
+          error: err
+        });
+      } else {
+        response.status(201).send("Received a request to insert data ");
+      };
+    }); 
 });
 
 module.exports.shop = serverless(app);

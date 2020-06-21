@@ -17,3 +17,7 @@ functions:
           path: createheader
           method: post
           cors: true
+      - http:
+          path: createitems
+          method: post
+          cors: true
