@@ -38,11 +38,11 @@ app.post("/createheader", function (request, response) {
 
 app.post("/createitems", function (request, response) {
   const values = request.body;
-  const itemid = 1;
-  const usershopheaderid = "12f69622-b3b4-11ea-85ff-06c7454f588e";
-  const itemname = "apples";
-  const qty = 3;
-  const price = 0.15
+  const itemid = values.itemid;
+  const usershopheaderid = values.usershopheaderid;
+  const itemname = values.itemname;
+  const qty = values.qty;
+  const price = values.price;
   
   connection.query("INSERT INTO usershopitems(id, usershopheaderid, itemname, qty, price) VALUES (?, ?, ?, ?, ?)",
     [itemid, usershopheaderid, itemname, qty, price],
