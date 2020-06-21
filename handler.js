@@ -21,8 +21,8 @@ app.post("/createheader", function (request, response) {
   const values = request.body;
   const userid = 1;
   
-  connection.query("INSERT INTO usershopheader(id, userid, savings, totalcost) VALUES (uuid(), ?, ?, ?)",
-    [userid, values.savings, values.totalcost],
+  connection.query("INSERT INTO usershopheader(id, userid, savings, totalcost) VALUES (?, ?, ?, ?)",
+    [values.id, userid, values.savings, values.totalcost],
      
     function (err, data) {
       if (err) {
